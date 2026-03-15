@@ -1,31 +1,25 @@
 pipeline {
-agent any
-stages {
-stage('Checkout') {
-steps {
-// Récupère le code depuis le dépôt GitHub
-git
-'https://github.com/yourusername/yourrepository.git'
-}
-}
-stage('Compile') {
-steps {
-script {
-// Compile le code Java
-sh 'javac HelloWorld.java'
+    agent any
 
-}
-}
-}
-stage('Run') {
-steps {
-script {
-// Exécute le code Java compilé
+    stages {
+        stage('Checkout') {
+            steps {
+             
+                git 'https://github.com/souma406/Jenkins.git'
+            }
+        }
 
-sh 'java HelloWorld'
+        stage('Compile') {
+            steps {
+              
+                sh 'javac HelloWorld.java'
+            }
+        }
 
-}
-}
-}
-}
+        stage('Run') {
+            steps {
+                sh 'java HelloWorld'
+            }
+        }
+    }
 }
